@@ -203,7 +203,7 @@ class NeonDocker
 
   def docker_image_tag
     image_type = @options[:all] ? 'all' : 'plasma'
-    @tag = 'kdeneon/' + image_type + ':' + @options[:edition]
+    @tag = 'invent-registry.kde.org/neon/docker-images/' + image_type + ':' + @options[:edition]
   end
 
   def docker_pull
