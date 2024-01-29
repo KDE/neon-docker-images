@@ -17,14 +17,13 @@ By default it will run a full session with startkde on DISPLAY=:1, you can use X
 
 ```
 Xephyr -screen 1024x768 :1 &
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix invent-registry.kde.org/neon/docker-images/plasma:unstable
+docker run --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --network=host -v /tmp/.X11-unix:/tmp/.X11-unix invent-registry.kde.org/neon/docker-images/plasma:unstable
 ```
 
 Or you can tell it to run on DISPLAY=:0 and run a single app
 
 ```
-xhost +
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=:0 --security-opt seccomp=unconfined invent-registry.kde.org/neon/docker-images/plasma:unstable dolphin
+docker run --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --network=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=:0 --security-opt seccomp=unconfined invent-registry.kde.org/neon/docker-images/plasma:unstable dolphin
 ```
 
 Or use the `neondocker` script.
