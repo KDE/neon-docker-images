@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 MAINTAINER Jonathan Riddell <jr@jriddell.org>
 ADD public.key /
 ADD bash-prompt /
@@ -12,7 +12,9 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     apt-key add /public.key && \
     rm /public.key && \
     apt-get update && \
-    apt-get install -y ubuntu-minimal ubuntu-standard neon-desktop plasma-workspace-wayland kwin-wayland kwin-wayland-backend-x11 kwin-wayland-backend-wayland kwin-x11 phonon4qt5 kdesdk-devenv-dependencies phonon4qt5-backend-vlc && \
+    apt-get install -y neon-settings-2 && \
+    apt-get install -y ubuntu-minimal ubuntu-standard neon-desktop plasma-workspace-wayland kwin-wayland kwin-wayland-backend-x11 kwin-wayland-backend-wayland kwin-x11 && \
+    apt-get dist-upgrade -y --allow-downgrades && \
     groupadd admin && \
     useradd -G admin,video -ms /bin/bash neon && \
     # Refresh apt cache once more now that appstream is installed \
