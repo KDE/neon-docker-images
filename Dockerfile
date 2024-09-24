@@ -1,6 +1,5 @@
 FROM ubuntu:24.04
 MAINTAINER Jonathan Riddell <jr@jriddell.org>
-ADD public.key /
 ADD bash-prompt /
 RUN apt-get update && \
     apt-get install -y gnupg2
