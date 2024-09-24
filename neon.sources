@@ -2,4 +2,4 @@ Types: deb deb-src
 URIs: http://archive.neon.kde.org/unstable
 Suites: noble
 Components: main
-Signed-By: /etc/apt/keyrings/neon-archive-keyring.gpg
+Signed-By: /etc/apt/keyrings/neon-archive-keyring.asc

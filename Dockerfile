@@ -3,7 +3,7 @@ MAINTAINER Jonathan Riddell <jr@jriddell.org>
 ADD bash-prompt /
 RUN apt-get update && \
     apt-get install -y gnupg2
-ADD neon-archive-keyring.gpg /etc/apt/keyrings/
+ADD neon-archive-keyring.asc /etc/apt/keyrings/
 ADD neon.sources /etc/apt/sources.list.d/
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     echo keyboard-configuration keyboard-configuration/layout select 'English (US)' | debconf-set-selections && \
