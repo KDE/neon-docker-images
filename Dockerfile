@@ -10,7 +10,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     echo keyboard-configuration keyboard-configuration/layoutcode select 'us' | debconf-set-selections && \
     echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections && \
     apt-get update && \
-    apt-get install -y ubuntu-minimal ubuntu-standard neon-desktop plasma-workspace-wayland kwin-wayland kwin-wayland-backend-x11 kwin-wayland-backend-wayland kwin-x11 && \
+    apt-get install -y ubuntu-minimal ubuntu-standard neon-desktop plasma-workspace-wayland kwin-wayland kwin-wayland-backend-wayland && \
     apt-get dist-upgrade -y --allow-downgrades && \
     groupadd admin && \
     useradd -G admin,video -ms /bin/bash neon && \
@@ -37,4 +37,4 @@ COPY gitconfig $HOME/.gitconfig
 COPY kwinrc $HOME/.config/kwinrc
 RUN sudo chown -R neon.neon $HOME/.gitconfig $HOME/.config
 WORKDIR /home/neon
-CMD startplasma-x11
+CMD startplasma-wayland
